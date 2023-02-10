@@ -104,14 +104,10 @@ const ChartPage = ({ period, name, router, index }) => {
           fontSize: '0.8rem',
           cursor: 'pointer',
           borderRadius: '0.5rem',
-          width: '80px',
-          // hover
-          '&:hover': {
-            background: '#f5f5f5',
-          },
+          width: '75px',
         }}
       >
-        reload {period}
+        load {period}
       </button>
     </div>
   );
