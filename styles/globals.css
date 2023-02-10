@@ -14,3 +14,24 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.chart-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.chart {
+  /* width: 100%; */
+  margin: 0;
+  padding: 0;
+  width: 50%;
+}
+
+@media screen and (max-width: 1000px) {
+  .chart {
+    width: 100%;
+    min-width: 0;
+  }
+}
