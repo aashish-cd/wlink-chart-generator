@@ -98,12 +98,13 @@ const ChartPage = ({ period, name, router, index }) => {
         style={{
           position: 'fixed',
           top: 0,
-          left: index * 250,
+          left: index * 90,
           border: 'none',
-          padding: '1rem',
-          fontSize: '1rem',
+          padding: '0.8rem',
+          fontSize: '0.8rem',
           cursor: 'pointer',
           borderRadius: '0.5rem',
+          width: '80px',
           // hover
           '&:hover': {
             background: '#f5f5f5',
