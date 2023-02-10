@@ -84,14 +84,11 @@ const ChartPage = ({ period, name, router, index }) => {
   useEffect(() => {
     // fetchDataFromJson(name);
 
-    if (router.isReady) {
-      // router.query.lang is defined
-      fetchDataFromJson(name);
-    } else {
-      return;
-    }
+    // router.query.lang is defined
+    fetchDataFromJson(name);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady]);
+  }, [name]);
 
   return (
     <div className='chart' style={{ margin: '5rem auto' }}>
