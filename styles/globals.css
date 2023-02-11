@@ -16,21 +16,22 @@ a {
 }
 
 .chart-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 100%;
 }
 
 .chart {
-  width: 45%;
+  width: 580px;
   margin: 0;
   padding: 0;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 580px) {
+  .chart-container {
+    grid-template-columns: 1fr;
+  }
   .chart {
     width: 100%;
-    min-width: 0;
   }
 }

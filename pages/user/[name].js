@@ -16,10 +16,12 @@ const UserChart = () => {
           name={name}
           router={router}
           index={index}
+          time={time[index]}
         />
       ))}
     </div>
   );
 };
 const period = ['daily', 'weekly', 'monthly', 'quarterly'];
+const time = ['Month', 'Day', 'Month', 'Month'];
 export default UserChart;

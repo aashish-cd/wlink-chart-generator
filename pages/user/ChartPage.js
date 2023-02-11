@@ -25,10 +25,10 @@ ChartJS.register(
   Legend
 );
 
-const ChartPage = ({ period, name, router, index }) => {
+const ChartPage = ({ period, name, router, index, time }) => {
   const [data, setData] = useState();
   const [username, setUsername] = useState(name);
-  const [time, setTime] = useState();
+
   const [labels, setLabels] = useState();
 
   //
@@ -43,7 +43,13 @@ const ChartPage = ({ period, name, router, index }) => {
 
       setUsername(name);
       setData(Object.values(resData)[0]);
-      setLabels(data.map((item) => dayjs(item.time).format('MMM-DD')));
+      setLabels(
+        data.map((item) =>
+          time !== 'Day'
+            ? dayjs(item.time).format('MMM-DD')
+            : dayjs(item.time).format('ddd')
+        )
+      );
 
       console.log({ username, period, data });
     } catch (error) {
@@ -60,6 +66,28 @@ const ChartPage = ({ period, name, router, index }) => {
       title: {
         display: true,
         text: `${username} - ${period}`,
+      },
+    },
+    scales: {
+      y: {
+        grid: {
+          display: true,
+        },
+        title: {
+          display: true,
+          text: 'MB',
+          align: 'end',
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+        title: {
+          display: true,
+          text: time,
+          align: 'end',
+        },
       },
     },
   };
