@@ -133,7 +133,7 @@ const ChartPage = ({ period, name, router, index, time }) => {
     fetchDataFromJson(name);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.query, name, username]);
+  }, [name, username]);
 
   return (
     <div className='chart' style={{ margin: '5rem auto' }}>
