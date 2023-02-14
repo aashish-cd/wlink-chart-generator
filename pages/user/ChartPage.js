@@ -12,7 +12,6 @@ import {
 import { Line } from 'react-chartjs-2';
 
 import dayjs from 'dayjs';
-import { useRouter } from 'next/router';
 import axios from 'axios';
 
 ChartJS.register(
@@ -75,8 +74,26 @@ const ChartPage = ({ period, name, router, index, time }) => {
         },
         title: {
           display: true,
-          text: 'MB',
-          align: 'end',
+          labelString: 'MB',
+        },
+        ticks: {
+          beginAtZero: true,
+        },
+      },
+      // ...
+    },
+    scales: {
+      y: {
+        grid: {
+          display: true,
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'MB',
+        },
+
+        ticks: {
+          beginAtZero: true,
         },
       },
       x: {
@@ -116,12 +133,12 @@ const ChartPage = ({ period, name, router, index, time }) => {
     fetchDataFromJson(name);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name]);
+  }, [router.query, name, username]);
 
   return (
     <div className='chart' style={{ margin: '5rem auto' }}>
       <Line options={options} data={lineData} />
-      <button
+      {/* <button
         onClick={() => fetchDataFromJson(name)}
         style={{
           position: 'fixed',
@@ -136,7 +153,7 @@ const ChartPage = ({ period, name, router, index, time }) => {
         }}
       >
         load {period}
-      </button>
+      </button> */}
     </div>
   );
 };
