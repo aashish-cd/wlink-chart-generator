@@ -19,10 +19,12 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
+  /* justify grids left */
+  /* justify-content: left; */
 }
 
 .chart {
-  width: 580px;
+  width: 540px;
   margin: 0;
   padding: 0;
 }

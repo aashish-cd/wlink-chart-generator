@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,11 +8,11 @@ import {
   Title,
   Tooltip,
   Legend,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 
-import dayjs from "dayjs";
-import axios from "axios";
+import dayjs from 'dayjs';
+import axios from 'axios';
 
 ChartJS.register(
   CategoryScale,
@@ -44,9 +44,9 @@ const ChartPage = ({ period, name, router, index, time }) => {
       setData(Object.values(resData)[0]);
       setLabels(
         data.map((item) =>
-          time !== "Day"
-            ? dayjs(item.time).format("MMM-DD")
-            : dayjs(item.time).format("ddd")
+          time !== 'Day'
+            ? dayjs(item.time).format('MMM-DD')
+            : dayjs(item.time).format('ddd')
         )
       );
 
@@ -58,7 +58,7 @@ const ChartPage = ({ period, name, router, index, time }) => {
 
   const options = {
     responsive: true,
-    aspectRatio: 3,
+    aspectRatio: 2.5,
     plugins: {
       legend: {
         display: false,
@@ -69,21 +69,7 @@ const ChartPage = ({ period, name, router, index, time }) => {
       },
       tooltip: { enabled: false },
     },
-    scales: {
-      y: {
-        grid: {
-          display: true,
-        },
-        title: {
-          display: true,
-          labelString: "MB",
-        },
-        ticks: {
-          beginAtZero: true,
-        },
-      },
-      // ...
-    },
+
     scales: {
       y: {
         grid: {
@@ -91,11 +77,12 @@ const ChartPage = ({ period, name, router, index, time }) => {
         },
         scaleLabel: {
           display: true,
-          labelString: "MB",
+          labelString: 'MB',
         },
 
         ticks: {
           beginAtZero: true,
+          stepSize: 0.5,
         },
       },
       x: {
@@ -105,7 +92,7 @@ const ChartPage = ({ period, name, router, index, time }) => {
         title: {
           display: true,
           text: time,
-          align: "end",
+          align: 'end',
         },
       },
     },
@@ -114,7 +101,7 @@ const ChartPage = ({ period, name, router, index, time }) => {
   const miniOptions = {
     responsive: true,
     aspectRatio: 15,
-    borderColor: "#555", // lineColor
+    borderColor: '#C3CAD7', // lineColor
     plugins: {
       legend: {
         display: false,
@@ -138,8 +125,8 @@ const ChartPage = ({ period, name, router, index, time }) => {
         },
         title: {
           display: false,
-          text: "MB",
-          align: "end",
+          text: 'MB',
+          align: 'end',
         },
       },
       x: {
@@ -157,15 +144,15 @@ const ChartPage = ({ period, name, router, index, time }) => {
     labels,
     datasets: [
       {
-        label: "Download",
-        borderColor: "#F97879",
-        backgroundColor: "#FEFEFF",
+        label: 'Download',
+        borderColor: '#F97879',
+        backgroundColor: '#FEFEFF',
         data: data?.map((item) => item.download),
       },
       {
-        label: "Upload",
-        borderColor: "#137BC2",
-        backgroundColor: "#FEFEFF",
+        label: 'Upload',
+        borderColor: '#137BC2',
+        backgroundColor: '#FEFEFF',
         data: data?.map((item) => item.upload),
       },
     ],
@@ -174,7 +161,8 @@ const ChartPage = ({ period, name, router, index, time }) => {
     labels,
     datasets: [
       {
-        data: data?.map((item) => item.upload),
+        data: data?.map((item) => item.download),
+        borderWidth: 1,
       },
     ],
   };
@@ -189,18 +177,18 @@ const ChartPage = ({ period, name, router, index, time }) => {
   }, [name, username]);
 
   return (
-    <div className="chart" style={{ margin: "5vh auto 0 auto" }}>
+    <div className='chart' style={{ margin: '5vh auto 0 auto' }}>
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        <span style={{ textTransform: "capitalize" }}>{period}</span>
+        <span style={{ textTransform: 'capitalize' }}>{period}</span>
       </div>
       <Line options={options} data={lineData} />
-      <div style={{ backgroundColor: "#888" }}>
+      <div style={{ backgroundColor: '#DCE2EB' }}>
         <Line options={miniOptions} data={miniLineData} />
       </div>
     </div>
